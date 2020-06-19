@@ -70,6 +70,11 @@ main {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
+#form-buttons {
+    display: none;
+    text-align: right;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -106,5 +111,17 @@ header {
     border: 0;
     overflow: hidden;
     position: relative;
+}
+
+#note-title {
+    display: none;
+    width: calc(100% - 10px);
+    min-height: 43px;
+    margin: 0 5px;
+    padding: 10px 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    border: 0;
 }
   
