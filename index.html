@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Jot-a note taking app</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <main>
+        <header>
+            <img class='header-logo' 
+            src="https://www.pngitem.com/pimgs/m/79-792415_take-note-icon-png-transparent-png.png" 
+            alt="Take note logo">
+            <h2 class='header-title'>Jot</h2>
+        </header>
+        <div id='form-container'>
+            <form id='form' autocomplete="off">
+                <input id='note-title' placeholder='Title' type="text">
+                <input id='note-text' placeholder='Take a note...' type="text">
+                <div id='form-buttons'>
+                    <button type='submit' id='submit-button'>Submit</button>
+                    <button type='submit' id='form-close-button'>Close</button>
+                </div>
+            </form>
+        </div>
+        <div id='notes'></div>
+        <div id='placeholder'>
+            <img id='placeholder-logo' src="https://image.flaticon.com/icons/png/512/269/269074.png" alt="Note">
+            <p id='placeholder-text'>Notes you add appear here</p>
+        </div>
+    </main>
+</body>
+</html>
