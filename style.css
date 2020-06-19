@@ -87,4 +87,24 @@ header {
     padding-top: 4px;
     padding-left: 4px;
 }
+
+#notes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+#note-text {
+    width: calc(100% - 10px);
+    min-height: 43px;
+    margin: 0 5px;
+    padding: 10px 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0.00625em;
+    border: 0;
+    overflow: hidden;
+    position: relative;
+}
   
