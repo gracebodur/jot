@@ -1,7 +1,7 @@
 class App {
     constructor() {
         this.notes= []
-
+        this.$placeholder = document.querySelector('#placeholder')
         this.$form = document.querySelector('#form')
         this.$noteTitle = document.querySelector('#note-title')
         this.$noteText = document.querySelector('#note-text')
@@ -57,7 +57,23 @@ class App {
             id: this.notes.length > 0 ? this.notes[this.notes.length -1].id + 1 : 1
         }
         this.notes = [...this.notes, newNote]
-        console.log(this.notes)
+        //console.log(this.notes)
+        this.displayNotes()
+    }
+    displayNotes() {
+        const hasNotes = this.notes.length > 0
+        this.$placeholder.style.display = hasNotes ? 'none' : 'flex'
+        this.notes.map(note => `
+            <div style='background: ${note.color}' class='note'>
+            <div class="${note.title && 'note-title'}">${note.title}</div>
+            <div class='note-text'>${note.text}</div>
+            </div>
+        `)
+        // if (hasNotes) {
+        //    this.$placeholder.style.display = 'none' 
+        // } else {
+        //     this.$placeholder.style.displa = 'flex'
+        // }
     }
 }
 
