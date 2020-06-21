@@ -1,5 +1,7 @@
 class App {
     constructor() {
+        this.notes= []
+
         this.$form = document.querySelector('#form')
         this.$noteTitle = document.querySelector('#note-title')
         this.$noteText = document.querySelector('#note-text')
@@ -17,6 +19,11 @@ class App {
             event.preventDefault()
             const title = this.$noteTitle.value
             const text = this.$noteText.value
+            const hasNote = title || text
+            if (hasNote) {
+                this.addNote({title: title, text: text})
+            }
+
         })
     }
 
@@ -40,6 +47,17 @@ class App {
         this.$form.classList.remove('form-open')
         this.$noteTitle.style.display = 'none';
         this.$formButtons.style.display = 'none';
+    }
+
+    addNote(note) {
+        const newNote = {
+            title: note.title,
+            text: note.txt,
+            color: 'white',
+            id: this.notes.length > 0 ? this.notes[this.notes.length -1].id + 1 : 1
+        }
+        this.notes = [...this.notes, newNote]
+        console.log(this.notes)
     }
 }
 
