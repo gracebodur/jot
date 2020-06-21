@@ -155,9 +155,30 @@ header {
     background-color: #007bff;
 }
   
-  #submit-button:hover,
+#submit-button:hover,
   #form-close-button:hover {
     filter: brightness(95%);
 }
+
+.note {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 16px;
+    width: 250px;
+    background-color: #fff;
+    border-color: #e0e0e0;
+    border: 1px solid #d3d3d3;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    transition-duration: 0.218s;
+    transition-property: background, border, opacity, box-shadow, transform;
+    transition-timing-function: ease-in;
+}
+  
+
+
   
 

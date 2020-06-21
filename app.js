@@ -63,8 +63,9 @@ class App {
     displayNotes() {
         const hasNotes = this.notes.length > 0
         this.$placeholder.style.display = hasNotes ? 'none' : 'flex'
+
         this.notes.map(note => `
-            <div style='background: ${note.color}' class='note'>
+            <div style='background: ${note.color};' class='note'>
             <div class="${note.title && 'note-title'}">${note.title}</div>
             <div class='note-text'>${note.text}</div>
             </div>
