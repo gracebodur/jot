@@ -41,26 +41,29 @@ class App {
 
     openForm() {
         this.$form.classList.add('form-open')
-        this.$noteTitle.style.display = 'block';
-        this.$formButtons.style.display = 'block';
+        this.$noteTitle.style.display = 'block'
+        this.$formButtons.style.display = 'block'
     }
 
     closeForm() {
         this.$form.classList.remove('form-open')
-        this.$noteTitle.style.display = 'none';
-        this.$formButtons.style.display = 'none';
+        this.$noteTitle.style.display = 'none'
+        this.$formButtons.style.display = 'none'
+        this.$noteTitle.value = ''
+        this.$noteText.value = ''
     }
 
     addNote(note) {
         const newNote = {
             title: note.title,
-            text: note.txt,
+            text: note.text,
             color: 'white',
             id: this.notes.length > 0 ? this.notes[this.notes.length -1].id + 1 : 1
         }
         this.notes = [...this.notes, newNote]
         //console.log(this.notes)
         this.displayNotes()
+        this.closeForm()
     }
     displayNotes() {
         const hasNotes = this.notes.length > 0
