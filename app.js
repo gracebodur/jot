@@ -8,6 +8,7 @@ class App {
         this.$noteTitle = document.querySelector('#note-title')
         this.$noteText = document.querySelector('#note-text')
         this.$formButtons = document.querySelector('#form-buttons')
+        this.$formCloseButton = document.querySelector('#form-close-button')
         this.addEventListeners()
     }
 
@@ -25,11 +26,16 @@ class App {
             if (hasNote) {
                 this.addNote({title: title, text: text})
             }
+        })
 
+        this.$formCloseButton.addEventListener('click', event => {
+            event.stopPropagation()
+            this.closeForm()
         })
     }
 
     handleFormClick() {
+        console.log('test')
         const isFormClicked= this.$form.contains(event.target)
 
         const title = this.$noteTitle.value
