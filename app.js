@@ -35,7 +35,7 @@ class App {
     }
 
     handleFormClick() {
-        console.log('test')
+       // console.log('test')
         const isFormClicked= this.$form.contains(event.target)
 
         const title = this.$noteTitle.value
