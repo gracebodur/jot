@@ -13,8 +13,9 @@ class App {
         this.$formButtons = document.querySelector('#form-buttons')
         this.$formCloseButton = document.querySelector('#form-close-button')
         this.$modal = document.querySelector(".modal")
-        this.$modalTitle = document.querySelector(".modal-title");
-        this.$modalText = document.querySelector(".modal-text");
+        this.$modalTitle = document.querySelector(".modal-title")
+        this.$modalText = document.querySelector(".modal-text")
+        this.$modalCloseButton = document.querySelector('.modal-close-button')
 
         this.addEventListeners()
     }
@@ -41,9 +42,13 @@ class App {
             event.stopPropagation()
             this.closeForm()
         })
+    
+        this.$modalCloseButton.addEventListener('click', event => {
+        this.closeModal(event);  
+      })
     }
 
-    handleFormClick() {
+    handleFormClick(event) {
        // console.log('test')
         const isFormClicked= this.$form.contains(event.target)
 
@@ -66,22 +71,27 @@ class App {
         this.$formButtons.style.display = 'block'
     }
 
+    closeForm() {
+        this.$form.classList.remove("form-open")
+        this.$noteTitle.style.display = "none"
+        this.$formButtons.style.display = "none"
+        this.$noteTitle.value = ""
+        this.$noteText.value = ""
+    }
+
     openModal(event) {
         if (event.target.closest('.note')) {
             this.$modal.classList.toggle('open-modal')
-            this.$modalTitle.value = this.title;
-            this.$modalText.value = this.text;
+            this.$modalTitle.value = this.title
+            this.$modalText.value = this.text
         }
     }
 
-    closeForm() {
-        this.$form.classList.remove('form-open')
-        this.$noteTitle.style.display = 'none'
-        this.$formButtons.style.display = 'none'
-        this.$noteTitle.value = ''
-        this.$noteText.value = ''
+    closeModal(event) {
+        this.editNote(); 
+        this.$modal.classList.toggle('open-modal');
     }
-
+   
     addNote({title, text}) {
         const newNote = {
             title,
@@ -93,6 +103,15 @@ class App {
         //console.log(this.notes)
         this.displayNotes()
         this.closeForm()
+    }
+
+    editNote() {
+        const title = this.$modalTitle.value;
+        const text = this.$modalText.value;
+        this.notes = this.notes.map(note => 
+          note.id === Number(this.id) ? { ...note, title, text } : note
+        );
+        this.displayNotes();
     }
 
     selectNote(event) {
@@ -109,7 +128,9 @@ class App {
         const hasNotes = this.notes.length > 0
         this.$placeholder.style.display = hasNotes ? 'none' : 'flex'
 
-        this.$notes.innerHTML = this.notes.map(note => `
+        this.$notes.innerHTML = this.notes
+        .map
+        (note => `
             <div style='background: ${note.color};' class='note' data-id='${note.id}'>
                 <div class="${note.title && 'note-title'}">${note.title}</div>
                 <div class='note-text'>${note.text}</div>
@@ -120,7 +141,9 @@ class App {
                     </div>
                 </div>
             </div>
-        `).join('')
+        `
+        )
+        .join('')
     }
 }
 
