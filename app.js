@@ -27,6 +27,10 @@ class App {
             this.openModal(event)
         })
 
+        document.body.addEventListener('mouseover', event => {
+            this.openTooltip(event);  
+        })
+
         //listen for submit event on the form
         this.$form.addEventListener('submit', event => {
             event.preventDefault()
@@ -91,7 +95,18 @@ class App {
         this.editNote(); 
         this.$modal.classList.toggle('open-modal');
     }
-   
+
+    //use matches method and DOM traversal to get the note div valueand access data set id
+    openTooltip(event) {
+        if (!event.target.matches('.toolbar-color')) return
+        this.id = event.target.nextElementSibling.dataset.id
+        //get specific coordinates where the user is hovering over the note
+        const noteCoords = event.target.getBoundingClientRect()
+        const horizontal = noteCoords.left + window.scrollX
+        const vertical = noteCoords.top + window.scrollY
+
+    }
+
     addNote({title, text}) {
         const newNote = {
             title,
