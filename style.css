@@ -336,6 +336,22 @@ header {
     color: #202124;
     opacity: 0.71;
 }
+
+#white {
+    background: white;
+}
+  
+#purple {
+    background: #d7aefb;
+}
+  
+#orange {
+    background: #fbbc04;
+}
+  
+#teal {
+    background: #a7ffeb;
+}
   
   
 
