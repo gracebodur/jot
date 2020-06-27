@@ -40,7 +40,7 @@ class App {
             this.style.display = 'flex'
         })
           
-        this.$colorTooltip.addEventListener('mouseout', event => {
+        this.$colorTooltip.addEventListener('mouseout', function() {
             this.style.display = 'none' 
         })
 
