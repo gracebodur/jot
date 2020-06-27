@@ -116,7 +116,7 @@ class App {
         //get specific coordinates where the user is hovering over the note
         const noteCoords = event.target.getBoundingClientRect()
         const horizontal = noteCoords.left 
-        const vertical = window.scrollY
+        const vertical = window.scrollY - 20
         this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`
         this.$colorTooltip.style.display = 'flex'
     }
