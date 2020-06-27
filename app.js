@@ -16,6 +16,7 @@ class App {
         this.$modalTitle = document.querySelector(".modal-title")
         this.$modalText = document.querySelector(".modal-text")
         this.$modalCloseButton = document.querySelector('.modal-close-button')
+        this.$colorTooltip = document.querySelector('#color-tooltip')
 
         this.addEventListeners()
     }
@@ -28,7 +29,19 @@ class App {
         })
 
         document.body.addEventListener('mouseover', event => {
-            this.openTooltip(event);  
+            this.openTooltip(event)  
+        })
+
+        document.body.addEventListener('mouseout', event => {
+            this.closeTooltip(event) 
+        })
+
+        this.$colorTooltip.addEventListener('mouseover', function() {
+            this.style.display = 'flex'
+        })
+          
+        this.$colorTooltip.addEventListener('mouseout', event => {
+            this.style.display = 'none' 
         })
 
         //listen for submit event on the form
@@ -102,9 +115,15 @@ class App {
         this.id = event.target.nextElementSibling.dataset.id
         //get specific coordinates where the user is hovering over the note
         const noteCoords = event.target.getBoundingClientRect()
-        const horizontal = noteCoords.left + window.scrollX
-        const vertical = noteCoords.top + window.scrollY
+        const horizontal = noteCoords.left 
+        const vertical = window.scrollY
+        this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`
+        this.$colorTooltip.style.display = 'flex'
+    }
 
+    closeTooltip(event) {
+        if (!event.target.matches('.toolbar-color')) return
+        this.$colorTooltip.style.display = 'none'
     }
 
     addNote({title, text}) {
