@@ -205,8 +205,8 @@ class App {
                 <div class='note-text'>${note.text}</div>
                 <div class='toolbar-container'>
                     <div class='toolbar'>
-                        <img class='toolbar-color' data-id=${note.id} src='./assets/paint.svg'>
-                        <img class='toolbar-delete' data-id=${note.id} src='./assets/delete.svg'>
+                        <img class='toolbar-color' data-id=${note.id} src='./assets/paint.svg' alt='color options'>
+                        <img class='toolbar-delete' data-id=${note.id} src='./assets/delete.svg' alt='delete icon'>
                     </div>
                 </div>
             </div>
